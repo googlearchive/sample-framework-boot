@@ -9,7 +9,7 @@
     "make-dist": "mkdirp dist",
     "build-shared": "cp -R src/shared dist && rollup -c src/shared/rollup.config.js",
     "build": "npm run clean-dist && npm run make-dist && npm run build-shared && npm run build-demos",
-    "build-demos": "npm run build-vanilla && npm run build-preact && npm run build-react && npm run build-vue && npm run build-custom-elements && npm run build-ember2",
+    "build-demos": "npm run build-vanilla && npm run build-preact && npm run build-react && npm run build-vue && npm run build-custom-elements && npm run build-ember2 && npm run build-angular",
     "build-vanilla": "cp -R src/vanilla dist",
     "make-preact": "mkdirp dist/preact",
     "build-preact": "npm run make-preact && cp src/preact/ssr.html dist/preact && cp src/preact/no-ssr.html dist/preact && rollup -c src/preact/rollup.config.js",
@@ -20,11 +20,18 @@
     "make-custom-elements": "mkdirp dist/custom-elements",
     "build-custom-elements": "npm run make-custom-elements && cp -R src/custom-elements dist",
     "make-ember2": "mkdirp dist/ember2",
-    "build-ember2": "npm run make-ember2 && cd src/third_party/ember2 && ember build --env production && cd .. && cd .. && cd .. && cp -R src/third_party/ember2/dist/ dist/ember2"
+    "build-ember2": "npm run make-ember2 && cd src/third_party/ember2 && ember build --env production && cd .. && cd .. && cd .. && cp -R src/third_party/ember2/dist/ dist/ember2",
+    "make-angular": "mkdirp dist/angular",
+    "build-angular": "npm run make-angular && ngc -p src/angular/tsconfig.json && node src/angular/rollup.config.js && cp src/angular/ssr.html dist/angular && cp src/angular/no-ssr.html dist/angular"
   },
   "author": "Paul Lewis",
   "license": "Apache-2.0",
   "dependencies": {
+    "@angular/common": "2.3.0",
+    "@angular/compiler": "2.3.0",
+    "@angular/compiler-cli": "2.3.0",
+    "@angular/core": "2.3.0",
+    "@angular/platform-browser": "2.3.0",
     "babel-cli": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "del-cli": "^0.2.0",
@@ -33,9 +40,14 @@
     "preact": "^7.1.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-commonjs": "^5.0.5",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-replace": "^1.1.1"
+    "rollup": "^0.36.4",
+    "rollup-plugin-babel": "2.6.1",
+    "rollup-plugin-commonjs": "5.0.5",
+    "rollup-plugin-node-resolve": "2.0.0",
+    "rollup-plugin-replace": "1.1.1",
+    "rollup-plugin-uglify": "1.0.1",
+    "rxjs": "5.0.0-rc.4",
+    "typescript": "2.0.10",
+    "zone.js": "0.7.2"
   }
 }
