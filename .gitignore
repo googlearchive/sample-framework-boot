@@ -3,3 +3,5 @@ node_modules
 dist
 bower_components
 src/ember2/tests
+src/angular/src/ngfactory
+src/angular/lib
