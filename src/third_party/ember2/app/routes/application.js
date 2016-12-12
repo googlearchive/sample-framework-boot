@@ -2520,6 +2520,6 @@ export default Ember.Route.extend({
         "score": -499,
         "text": "In eu est eu quam rhoncus vestibulum at non lectus. Proin non libero efficitur, semper lorem hendrerit, venenatis purus. Aliquam rhoncus, velit et rutrum tempor, nibh nulla scelerisque leo, vitae laoreet libero eros ac nisi."
       }
-    ]
+    ];
   }
 });
