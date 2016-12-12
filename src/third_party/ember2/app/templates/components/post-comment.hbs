@@ -1,0 +1,10 @@
+<div class="post__comment">
+  <h2 class="post__comment-author">{{ comment.username }} wrote</h2>
+  <p class="post__comment-text">
+    {{ comment.text }}
+  </p>
+
+  {{#vote-buttons score=comment.score}}{{/vote-buttons}}
+</div>
+
+{{yield}}

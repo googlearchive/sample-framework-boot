@@ -1,0 +1,10 @@
+<section class="post__comments">
+  <h1>Comments</h1>
+
+  {{yield}}
+
+  {{#each comments as |comment|}}
+    {{#post-comment comment=comment}}{{/post-comment}}
+  {{/each}}
+
+</section>

@@ -1,0 +1,41 @@
+{
+  "name": "benching-dec-2016",
+  "version": "1.0.0",
+  "description": "A simple homogenous component boot perf test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean-dist": "del dist",
+    "make-dist": "mkdirp dist",
+    "build-shared": "cp -R src/shared dist && rollup -c src/shared/rollup.config.js",
+    "build": "npm run clean-dist && npm run make-dist && npm run build-shared && npm run build-demos",
+    "build-demos": "npm run build-vanilla && npm run build-preact && npm run build-react && npm run build-vue && npm run build-custom-elements && npm run build-ember2",
+    "build-vanilla": "cp -R src/vanilla dist",
+    "make-preact": "mkdirp dist/preact",
+    "build-preact": "npm run make-preact && cp src/preact/ssr.html dist/preact && cp src/preact/no-ssr.html dist/preact && rollup -c src/preact/rollup.config.js",
+    "make-react": "mkdirp dist/react",
+    "build-react": "npm run make-react && cp src/react/ssr.html dist/react && cp src/react/no-ssr.html dist/react && rollup -c src/react/rollup.config.js",
+    "make-vue": "mkdirp dist/vue",
+    "build-vue": "npm run make-vue && cp -R src/vue dist && rollup -c src/vue/rollup.config.js",
+    "make-custom-elements": "mkdirp dist/custom-elements",
+    "build-custom-elements": "npm run make-custom-elements && cp -R src/custom-elements dist",
+    "make-ember2": "mkdirp dist/ember2",
+    "build-ember2": "npm run make-ember2 && cd src/third_party/ember2 && ember build --env production && cd .. && cd .. && cd .. && cp -R src/third_party/ember2/dist/ dist/ember2"
+  },
+  "author": "Paul Lewis",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "del-cli": "^0.2.0",
+    "ember-cli": "^2.10.0",
+    "mkdirp": "^0.5.1",
+    "preact": "^7.1.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1"
+  }
+}
