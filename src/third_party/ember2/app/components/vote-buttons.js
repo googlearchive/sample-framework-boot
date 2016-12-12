@@ -18,7 +18,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  click: function (evt) {
+  click(evt) {
     if (evt.target.classList.contains('post__vote-up') > 0) {
       this.set('score', this.score + 1);
       return;
