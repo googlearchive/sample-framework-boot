@@ -17,8 +17,25 @@ const intro = `/*!
  * Build: ${(new Date()).toISOString()}
  */`;
 
+import vue from 'rollup-plugin-vue2'
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import replace from 'rollup-plugin-replace';
+
 export default {
   entry: 'src/vue/app.js',
-  dest: 'dist/vue/app.js',
+  dest: 'dist/vue/' + (process.env.SSR ? 'app-ssr.js' : 'app.js'),
+  plugins: [
+    vue(),
+    resolve({
+      jsnext: true,
+      main: true,
+      browser: true
+    }),
+    commonjs(),
+    replace({
+      __SSR__: !!process.env.SSR
+    })
+  ],
   intro
 };
