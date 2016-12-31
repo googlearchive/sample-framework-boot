@@ -1,3 +1,6 @@
+const path = require('path');
+const webpack = require('webpack');
+
 const intro = `/*!
  *
  * Copyright 2016 Google Inc. All rights reserved.
@@ -17,21 +20,30 @@ const intro = `/*!
  * Build: ${(new Date()).toISOString()}
  */`;
 
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-
-export default {
-  entry: 'src/react/app.js',
-  dest: 'dist/react/app.js',
+module.exports = {
+  entry: './src/react/app',
+  output: {
+    path: './dist/react',
+    filename: 'app.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['latest'],
+        plugins: ['transform-react-jsx']
+      }
+    }]
+  },
   plugins: [
-    resolve({
-      jsnext: true,
-      main: true,
-      browser: true
+    new webpack.BannerPlugin(intro, { raw: true }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
     }),
-    babel({
-      compact: true
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
     })
-  ],
-  intro
+  ]
 };
