@@ -14,7 +14,7 @@
     "make-preact": "mkdirp dist/preact",
     "build-preact": "npm run make-preact && cp src/preact/ssr.html dist/preact && cp src/preact/no-ssr.html dist/preact && rollup -c src/preact/rollup.config.js",
     "make-react": "mkdirp dist/react",
-    "build-react": "npm run make-react && cp src/react/ssr.html dist/react && cp src/react/no-ssr.html dist/react && rollup -c src/react/rollup.config.js",
+    "build-react": "npm run make-react && cp src/react/ssr.html dist/react && cp src/react/no-ssr.html dist/react && cp node_modules/react/dist/react.min.js node_modules/react-dom/dist/react-dom.min.js dist/react && rollup -c src/react/rollup.config.js",
     "make-vue": "mkdirp dist/vue",
     "build-vue": "npm run make-vue && cp -R src/vue dist && rollup -c src/vue/rollup.config.js",
     "make-custom-elements": "mkdirp dist/custom-elements",

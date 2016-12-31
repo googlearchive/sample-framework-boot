@@ -17,8 +17,6 @@
 
 /* eslint-env es6 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Comments from './Comments';
 import commentData from '../shared/comments.js';
 

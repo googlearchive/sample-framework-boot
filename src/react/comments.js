@@ -17,7 +17,6 @@
 
 /* eslint-env es6 */
 
-import React from 'react';
 import VoteButtons from './vote-buttons';
 
 export default class Comments extends React.Component {

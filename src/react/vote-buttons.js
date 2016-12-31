@@ -17,8 +17,6 @@
 
 /* eslint-env es6 */
 
-import React from 'react';
-
 export default class VoteButtons extends React.Component {
 
   constructor (props) {
