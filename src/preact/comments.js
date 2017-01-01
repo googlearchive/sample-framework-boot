@@ -20,27 +20,21 @@
 import {h, Component} from 'preact';
 import VoteButtons from './vote-buttons';
 
-export default class Comments extends Component {
-  render () {
-    const comments = this.props.comments;
-    return (
-      <section class="post__comments">
-        <h1>Comments</h1>
-        {
-          comments.map((c, index) => {
-            return (
-              <div class="post__comment" key={index}>
-                <h2 class="post__comment-author">{c.username} wrote</h2>
-                <p class="post__comment-text">
-                  {c.text}
-                </p>
+const Comments = ({ comments }) =>
+  <section class="post__comments">
+    <h1>Comments</h1>
+    {
+      comments.map((c, index) =>
+        <div class="post__comment" key={index}>
+          <h2 class="post__comment-author">{c.username} wrote</h2>
+          <p class="post__comment-text">
+            {c.text}
+          </p>
 
-                <VoteButtons score={c.score} />
-              </div>
-            );
-          })
-        }
-      </section>
-    );
-  }
-}
+          <VoteButtons score={c.score} />
+        </div>
+      )
+    }
+  </section>;
+
+export default Comments;
