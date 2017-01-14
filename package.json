@@ -34,6 +34,7 @@
     "@angular/platform-browser": "2.3.0",
     "babel-cli": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "del-cli": "^0.2.0",
     "ember-cli": "^2.10.0",
     "mkdirp": "^0.5.1",

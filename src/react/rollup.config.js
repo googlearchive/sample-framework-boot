@@ -21,11 +21,16 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
+import uglify from 'rollup-plugin-uglify';
 
 export default {
   entry: 'src/react/app.js',
   dest: 'dist/react/app.js',
+  format: 'iife',
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     resolve({
       jsnext: true,
       main: true,
@@ -33,11 +38,10 @@ export default {
     }),
     commonjs(),
     babel({
-      compact: true
+      compact: true,
+      exclude: 'node_modules/**'
     }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    uglify()
   ],
   intro
 };
