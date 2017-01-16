@@ -17,7 +17,7 @@ const intro = `/*!
  * Build: ${(new Date()).toISOString()}
  */`;
 
-import vue from 'rollup-plugin-vue2'
+import vue from 'rollup-plugin-vue'
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
