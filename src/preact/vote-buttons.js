@@ -21,15 +21,8 @@ import {h, Component} from 'preact';
 
 export default class VoteButtons extends Component {
 
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      score: this.props.score
-    };
-
-    this.onVoteUp = this.onVoteUp.bind(this);
-    this.onVoteDown = this.onVoteDown.bind(this);
+  componentWillMount () {
+    this.state.score = this.props.score;
   }
 
   onVoteUp () {
@@ -44,16 +37,15 @@ export default class VoteButtons extends Component {
     });
   }
 
-  render () {
-    const score = this.state.score;
+  render ({}, { score }) {
     return (
       <div class="post__vote-buttons">
-        <button class="post__vote-down" onclick={this.onVoteDown}>-</button>
+        <button class="post__vote-down" onclick={this.onVoteDown.bind(this)}>-</button>
         <span class="post__vote-score">{
           score === 0 ? '0' :
               score > 0 ? '+' + score : score
         }</span>
-        <button class="post__vote-up" onclick={this.onVoteUp}>+</button>
+        <button class="post__vote-up" onclick={this.onVoteUp.bind(this)}>+</button>
       </div>
     );
   }
