@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 dist
 bower_components
-src/ember2/tests
+src/third_party/ember2/tests
+src/third_party/ember2/tmp
 src/angular/src/ngfactory
 src/angular/lib
