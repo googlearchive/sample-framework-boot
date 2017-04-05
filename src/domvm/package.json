@@ -1,0 +1,17 @@
+{
+  "name": "sample-framework-boot-domvm",
+  "version": "2.0.1",
+  "description": "domvm implementation of https://github.com/GoogleChrome/sample-framework-boot",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "rollup": "*",
+    "rollup-plugin-buble": "*",
+    "rollup-plugin-commonjs": "*",
+    "rollup-plugin-uglify": "*"
+  },
+  "dependencies": {
+    "domvm": "git://github.com/leeoniya/domvm.git#b417507fa504bd49356dec99c5002c73ffc634d5"
+  }
+}
