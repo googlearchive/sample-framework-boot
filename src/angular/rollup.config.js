@@ -7,7 +7,6 @@ const uglify = require('rollup-plugin-uglify');
 var plugins = [
 	nodeResolve({ module: true }),
   commonJS(),
-  patchHack(),
   uglify(),
 
 ]
